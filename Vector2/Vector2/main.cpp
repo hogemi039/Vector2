@@ -3,6 +3,7 @@
 
 int main(void)
 {
+	
     constexpr Vector2 vector1{ 0, 0 }, vector2{ 1, 1 }, vector3{ 4, 3 };
 	std::cout << "ベクトルの長さ:" << vector1.Length() << std::endl;
 	std::cout << "ベクトルの長さ:" << vector2.Length() << std::endl;
