@@ -45,7 +45,7 @@ std::ostream& operator<<(std::ostream& os, const Vector2<T>& vec)
 }
 
 template<typename U = double, typename T>
-/*constexpr */Vector2<U> normalize(const Vector2<T> &vec)
+/*constexpr */Vector2<U> Normalize(const Vector2<T> &vec)
 {
 	auto len = vec.Length();
 	if (len == 0)
