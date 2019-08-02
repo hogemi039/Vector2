@@ -9,6 +9,14 @@ struct Vector2
 	T y{};
 	constexpr Vector2() = default;  //デフォルトコンストラクタ
 	constexpr Vector2(T x, T y) :x(x), y(y) {}
+
+	template<typename U>
+	Vector2<T>& operator+=(const Vector2<U>& vector)
+	{
+		*this = *this + vector;
+		return *this;
+	}
+
 	/*constexpr */double Length()const  
 	{ 
 		return sqrt(x * x + y * y);
@@ -30,12 +38,19 @@ struct Vector2
 	}
 };
 
-
 template<typename T>
 Vector2<T> operator+(const Vector2<T>& vector1, const Vector2<T>& vector2)
 {
 	return Vector2{ vector1.x + vector2.x,vector1.y + vector2.y };
 }
+
+template<typename T>
+Vector2<T> operator-(const Vector2<T>& vector1, const Vector2<T>& vector2)
+{
+	return Vector2{ vector1.x - vector2.x, vector1.y - vector2.y };
+}
+
+
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const Vector2<T>& vec)
