@@ -17,6 +17,13 @@ struct Vector2
 		return *this;
 	}
 
+	template<typename U>
+	Vector2<T>& operator-=(const Vector2<U>& vector)
+	{
+		*this = *this - vector;
+		return *this;
+	}
+
 	/*constexpr */double Length()const  
 	{ 
 		return sqrt(x * x + y * y);
