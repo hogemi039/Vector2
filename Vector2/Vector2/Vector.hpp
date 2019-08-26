@@ -1,6 +1,6 @@
 #include <cmath>
 #include <iostream>
-#include <type_traits>
+
 
 template<typename T>
 struct Vector2
@@ -21,6 +21,13 @@ struct Vector2
 	Vector2<T>& operator-=(const Vector2<U>& vector)
 	{
 		*this = *this - vector;
+		return *this;
+	}
+
+	template<typename U>
+	Vector2<T>& operator*=(const U& scalar)
+	{
+		*this = *this * scalar;
 		return *this;
 	}
 
@@ -48,7 +55,7 @@ struct Vector2
 template<typename T>
 Vector2<T> operator+(const Vector2<T>& vector1, const Vector2<T>& vector2)
 {
-	return Vector2{ vector1.x + vector2.x,vector1.y + vector2.y };
+	return Vector2{ vector1.x + vector2.x, vector1.y + vector2.y };
 }
 
 template<typename T>
@@ -57,7 +64,11 @@ Vector2<T> operator-(const Vector2<T>& vector1, const Vector2<T>& vector2)
 	return Vector2{ vector1.x - vector2.x, vector1.y - vector2.y };
 }
 
-
+template<typename T>
+Vector2<T> operator*(const Vector2<T>& vector1, const T& vector2)
+{
+	return Vector2{ vector1.x * vector2, vector1.y * vector2 };
+}
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const Vector2<T>& vec)
